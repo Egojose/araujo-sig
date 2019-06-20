@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit, TemplateRef } from '@angular/core';
 import { SPServicio } from './servicios/sp-servicio';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { ItemAddResult } from 'sp-pnp-js';
+import { ItemAddResult, Items } from 'sp-pnp-js';
 import { Grupo } from './dominios/grupo';
 import { Usuario } from './dominios/usuario';
+import { Documento } from './dominios/documento';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 
 @Component({
@@ -13,20 +15,35 @@ import { Usuario } from './dominios/usuario';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private fB: FormBuilder, private servicio: SPServicio, private router: Router, public toastr: ToastrManager) { }
+  
+  displayedColumns: string[] = ['nombre', 'tipoDocumento', 'codigo', 'area', 'version', 'vigente', 'verArchivo'];
+  
   
   ngOnInit() {
     this.registrarControles();
     this.ObtenerUsuarioActual();
+    this.obtenerDocumentos();
   }
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort; 
   formDocumento: FormGroup;
   title = 'sig-araujo';
   DocAdjunto: any;
   grupos: Grupo[] = [];
   usuarioActual: Usuario;
+  dataSource;
+  documentos: Documento[] = [];
+  empty: boolean;
+  consultaDocumentos: Documento[] = [];
+  nombreUsuario: string;
+  idUsuario: number;
+  url: any;
+  formato: boolean;
+
 
   private registrarControles() {
     this.formDocumento = this.fB.group({
@@ -42,7 +59,9 @@ export class AppComponent {
     this.servicio.ObtenerUsuarioActual().subscribe(
       (Response) => {
         this.usuarioActual = new Usuario(Response.Title, Response.email, Response.Id);
-        this.obtenerGrupos();
+        this.nombreUsuario = this.usuarioActual.nombre;
+        this.idUsuario = this.usuarioActual.id;
+        // this.obtenerGrupos();
       }, err => {
         console.log('Error obteniendo usuario: ' + err);
       }
@@ -61,6 +80,33 @@ export class AppComponent {
     )
   };
 
+  obtenerDocumentos() {
+    this.servicio.obtenerDocumentos().then(
+      (respuesta) => {
+        this.documentos = Documento.fromJsonList(respuesta);
+        console.log(this.documentos)
+        if(this.documentos.length > 0) {
+          this.empty = false;
+          this.dataSource = new MatTableDataSource(this.documentos);
+          console.log(this.dataSource);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        }
+        else {
+          this.empty = true;
+        }
+      }
+    ).catch(
+      error => {
+        console.log('Error obteniendo los documentos: ' + error);
+      }
+    )
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   // verificarPermisos() {
   //   let existeGrupoCrearEditarPerfilEmpleado = this.grupos.find(x => x.title === "CrearEditarPerfilEmpleado");
   //   console.log(existeGrupoCrearEditarPerfilEmpleado);
@@ -71,12 +117,14 @@ export class AppComponent {
 
   adjuntarDocumento(event) {
     let Documento = event.target.files[0];
+    this.url = event.target.files[0].ServerRelativeUrl;
+    console.log(this.url);
+    console.log(Documento);
     if (Documento != null) {
       this.DocAdjunto = Documento;
-      this.agregarDocumento();
     } else {
       this.DocAdjunto = null;
-    };
+    }
   };
 
   async agregarDocumento() {
@@ -100,8 +148,7 @@ export class AppComponent {
       f => {
         f.file.getItem().then(item => {
           let idDocumento = item.Id;
-          this.actualizarMetadatosDocumento(objDocumento, idDocumento);
-          // item.update(obj);               
+          this.actualizarMetadatosDocumento(objDocumento, idDocumento);           
         })
       }
     ).catch(
@@ -124,6 +171,7 @@ export class AppComponent {
       )
   };
 
+
   MensajeExitoso(mensaje: string) {
     this.toastr.successToastr(mensaje, 'Confirmado!');
   }
@@ -140,6 +188,10 @@ export class AppComponent {
     this.toastr.infoToastr(mensaje, 'Info');
   }
 
+  // onSubmit() {
+  //   console.log('funciona')
+  //   this.agregarDocumento();
+  // }
  
   
 }
