@@ -43,12 +43,12 @@ export class SPServicio {
 
     async AgregarDocumento(nombre, archivo: File): Promise<any> {
         let mensaje = ""
-        let respuesta = await this.ObtenerConfiguracionConPost().web.getFolderByServerRelativeUrl("DocumentosSig").files.add(nombre, archivo);
+        let respuesta = await this.ObtenerConfiguracion().web.getFolderByServerRelativeUrl("DocumentosSig").files.add(nombre, archivo);
         return respuesta; 
     }
 
     ActualizarMetadatosSig(obj, idDocumento){
-        let respuesta = this.ObtenerConfiguracionConPost().web.lists.getByTitle("DocumentosSig").items.getById(idDocumento).update(obj);
+        let respuesta = this.ObtenerConfiguracion().web.lists.getByTitle("DocumentosSig").items.getById(idDocumento).update(obj);
         return respuesta;
     }
 
