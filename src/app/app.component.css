@@ -1,4 +1,46 @@
-
+table {
+    width: 100%;
+    margin: 20px;
+  }
 .card {
-    margin-top: 50px;
+    margin-top: 0px;
+}
+
+header {
+  background: url('../assets/images/header.png');
+  width: 100%;
+  height: 100px;
+}
+
+.card-header {
+  background: rgb(230, 230, 230)
+}
+#titulo {
+ color: #1F2547;
+}
+
+.contenedor {
+  background: rgb(245, 245, 245);
+}
+
+.container{
+  margin-top: 30px;
+  padding-top: 70px;
+}
+.usuario-logueado{
+  font-size: 20px;
+}
+
+.zona-usuario-logueado{
+  float: right;
+  margin-top: 40px;
+}
+
+.text-bienvenida {
+  text-align: end;
+  margin-right: 30px;
+  padding-top: 30px;
+  color: #1F2547;
+  font-weight: 400;
+  font-size: 22px;
 }
