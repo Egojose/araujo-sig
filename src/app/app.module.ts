@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { SPServicio } from './servicios/sp-servicio';
+import { MatRadioModule, MatFormFieldModule, MatAutocompleteModule, MatOptionModule, MatInputModule, MatTableModule, MatListModule, MatToolbarModule, MatPaginatorModule, MatExpansionModule, MatDialogModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,22 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatRadioModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatOptionModule,
+    MatInputModule,
+    MatTableModule,
+    MatListModule,
+    MatToolbarModule, 
+    MatPaginatorModule, 
+    MatExpansionModule, 
+    MatDialogModule, 
+    MatSelectModule, 
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [SPServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
