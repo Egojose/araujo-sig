@@ -1,11 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-    <div class="zona-usuario-logueado">
-        <div class="usuario text-right">
-            <span class="text-bienvenida">Bienvenido <b>{{nombreUsuario}}</b></span>
-        </div>
-    </div>
+  <div class="row">
+      <div class="logo col-md-6">
+          <a href="https://aribasas.sharepoint.com/sites/Intranet"><img src="../assets/images/logoAraujo.png"></a>
+      </div>
+      <div class="zona-usuario-logueado col-md-6">
+          <div class="usuario text-right">
+              <span class="text-bienvenida">Bienvenido <b>{{nombreUsuario}}</b></span>
+          </div>
+      </div>
+  </div>
 </header>
+
+<div class="Contenedor">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer"></div>
 
 <ng-container *ngIf="expression">
 <div class="container">
