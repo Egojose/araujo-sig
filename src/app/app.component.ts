@@ -84,11 +84,11 @@ export class AppComponent implements OnInit {
     this.servicio.obtenerDocumentos().then(
       (respuesta) => {
         this.documentos = Documento.fromJsonList(respuesta);
-        console.log(this.documentos)
+        // console.log(this.documentos.sort((a, b) => (a.nombreArchivo > b.nombreArchivo) ? 1 : -1))
         if(this.documentos.length > 0) {
           this.empty = false;
-          this.dataSource = new MatTableDataSource(this.documentos);
-          console.log(this.dataSource);
+          this.dataSource = new MatTableDataSource(this.documentos.sort((a, b) => (a.nombreArchivo > b.nombreArchivo) ? 1 : -1));
+          // console.log(this.dataSource);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
         }
