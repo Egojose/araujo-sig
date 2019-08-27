@@ -1,13 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-    <div class="zona-usuario-logueado">
-        <div class="usuario text-right">
-            <span class="text-bienvenida">Bienvenido <b>{{nombreUsuario}}</b></span>
-        </div>
-    </div>
+  <div class="row">
+      <div class="logo col-md-6">
+          <a href="https://aribasas.sharepoint.com/sites/Intranet"><img src="../assets/images/logoAraujo.png"></a>
+      </div>
+      <div class="zona-usuario-logueado col-md-6">
+          <div class="usuario text-right">
+              <span class="text-bienvenida">Bienvenido <b>{{nombreUsuario}}</b></span>
+          </div>
+      </div>
+  </div>
 </header>
 
-<!-- <ng-container *ngIf="expression">
+<div class="Contenedor">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer"></div>
+
+<ng-container *ngIf="expression">
 <div class="container">
   <div class="col-md-10 offset-1">
     <div class="card">
@@ -70,7 +80,7 @@
     </div>
   </div>
 </div>
-</ng-container> -->
+</ng-container>
 <div class="contenedor">
 <div class="container">
   <div class="col-md-12">
@@ -124,7 +134,7 @@
 
             <ng-container matColumnDef="verArchivo">
                 <th mat-header-cell *matHeaderCellDef> Ver archivo </th>
-                <td mat-cell *matCellDef="let element"><a href="{{element.rutaArchivo}}" target="_blank"><button type="button" class="btn btn-primary">Ver</button></a></td>
+                <td mat-cell *matCellDef="let element"><a href="{{'https://aribasas.sharepoint.com' + element.rutaArchivo}}" target="_blank"><button type="button" class="btn btn-primary">Ver</button></a></td>
               </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
