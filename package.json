@@ -21,12 +21,12 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "@pnp/sp": "^2.6.0",
     "core-js": "^2.5.4",
     "ng6-toastr-notifications": "^1.0.4",
     "ngx-bootstrap": "^4.3.0",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.2",
-    "sp-pnp-js": "^3.0.10",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

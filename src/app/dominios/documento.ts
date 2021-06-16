@@ -1,7 +1,6 @@
 export class Documento {
     constructor(
       public nombre: string,
-      public descripcion: string,
       public tipoDocumento: string,
       public codigoDocumento: string,
       public proceso: string,
@@ -13,7 +12,6 @@ export class Documento {
     public static fromJson(element: any) {
         return new Documento(
            element.Title,
-           element.Descripcion,
            element.TipoDocumento,
            element.CodigoDocumento,
            element.Proceso,

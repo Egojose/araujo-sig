@@ -1,5 +1,6 @@
-import { environment } from "src/environments/environment.prod";
-import { default as pnp, Web } from 'sp-pnp-js';
+import { environment } from "src/environments/environment";
+import { sp } from "@pnp/sp/presets/all";
+// import { default as pnp, Web } from 'sp-pnp-js';
 import { Injectable } from "@angular/core";
 import { from } from 'rxjs'; 
 
@@ -10,9 +11,9 @@ export class SPServicio {
     constructor() {}
 
     public ObtenerConfiguracion() {
-        const configuracionSharepoint = pnp.sp.configure({
+        const configuracionSharepoint = sp.configure({
             headers: {
-                "Accept": "application/json; odata=verbose"
+                'Accept': 'application/json; odata=verbose'
             }
         }, environment.urlWeb);
 
@@ -20,7 +21,7 @@ export class SPServicio {
     }
 
     public ObtenerConfiguracionConPost() {
-        const configuracionSharepoint = pnp.sp.configure({
+        const configuracionSharepoint = sp.configure({
             headers: {
                 "Accept": "application/json; odata=verbose",
                 'Content-Type': 'application/json;odata=verbose',
@@ -53,7 +54,7 @@ export class SPServicio {
     }
 
     obtenerDocumentos() {
-        let respuesta = this.ObtenerConfiguracion().web.lists.getByTitle(environment.listaDocumentos).items.select("ID", "Title", "TipoDocumento", "CodigoDocumento", "Area", "Version0","Vigente", "FileLeafRef", "File").expand("File").getAll();
+        let respuesta = this.ObtenerConfiguracion().web.lists.getByTitle(environment.listaDocumentos).items.select("Title", "TipoDocumento", "CodigoDocumento", "Proceso", "FileLeafRef", "File").expand("File").getAll();
         return respuesta;
     }
     

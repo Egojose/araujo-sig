@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlRaiz: 'https://enovelsoluciones.sharepoint.com/',
-  urlWeb: 'https://enovelsoluciones.sharepoint.com/sites/appsintervial/DocumentosSIG',
+  urlWeb: 'https://enovelsoluciones.sharepoint.com/sites/appsintervial',
   urlRelativa: '/sites/appsintervial/DocumentosSIG',
   listaDocumentos: 'DocumentosSIG'
 };

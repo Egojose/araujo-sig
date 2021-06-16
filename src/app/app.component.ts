@@ -3,7 +3,7 @@ import { SPServicio } from './servicios/sp-servicio';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { ItemAddResult, Items } from 'sp-pnp-js';
+// import { ItemAddResult, Items } from 'sp-pnp-js';
 import { Grupo } from './dominios/grupo';
 import { Usuario } from './dominios/usuario';
 import { Documento } from './dominios/documento';
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(private fB: FormBuilder, private servicio: SPServicio, private router: Router, public toastr: ToastrManager) { }
   
-  displayedColumns: string[] = ['nombre', 'descripcion', 'tipoDocumento', 'codigo', 'proceso', 'verArchivo'];
+  displayedColumns: string[] = ['nombre', 'tipoDocumento', 'codigo', 'proceso', 'verArchivo'];
   
   
   ngOnInit() {
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
   ObtenerUsuarioActual() {
     this.servicio.ObtenerUsuarioActual().subscribe(
       (Response) => {
-        this.usuarioActual = new Usuario(Response.Title, Response.email, Response.Id);
+        this.usuarioActual = new Usuario(Response.Title, Response.Email, Response.Id);
         this.nombreUsuario = this.usuarioActual.nombre;
         this.idUsuario = this.usuarioActual.id;
         // this.obtenerGrupos();
