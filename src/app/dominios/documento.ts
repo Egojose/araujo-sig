@@ -1,12 +1,10 @@
 export class Documento {
     constructor(
-      public id: number,
       public nombre: string,
+      public descripcion: string,
       public tipoDocumento: string,
       public codigoDocumento: string,
-      public area: string,
-      public version: string,
-      public vigente: any, 
+      public proceso: string,
       public nombreArchivo: string,
       public rutaArchivo: string
     ) {}
@@ -14,13 +12,11 @@ export class Documento {
 
     public static fromJson(element: any) {
         return new Documento(
-           element.ID,
            element.Title,
+           element.Descripcion,
            element.TipoDocumento,
            element.CodigoDocumento,
-           element.Area,
-           element.Version0,
-           element.Vigente,
+           element.Proceso,
            element.File.Name,
            element.File.ServerRelativeUrl
 

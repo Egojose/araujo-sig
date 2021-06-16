@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(private fB: FormBuilder, private servicio: SPServicio, private router: Router, public toastr: ToastrManager) { }
   
-  displayedColumns: string[] = ['nombre', 'tipoDocumento', 'codigo', 'area', 'version', 'vigente', 'verArchivo'];
+  displayedColumns: string[] = ['nombre', 'descripcion', 'tipoDocumento', 'codigo', 'proceso', 'verArchivo'];
   
   
   ngOnInit() {

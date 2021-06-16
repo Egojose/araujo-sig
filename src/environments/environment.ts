@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  urlRaiz: 'https://aribasas.sharepoint.com',
-  urlWeb: 'https://aribasas.sharepoint.com/sites/Intranet/sig',
-  urlRelativa: '/sites/Intranet/sig',
-  listaDocumentos: 'DocumentosSig'
+  urlRaiz: 'https://enovelsoluciones.sharepoint.com/',
+  urlWeb: 'https://enovelsoluciones.sharepoint.com/sites/appsintervial/DocumentosSIG',
+  urlRelativa: '/sites/appsintervial/DocumentosSIG',
+  listaDocumentos: 'DocumentosSIG'
 };
 
 /*
