@@ -8,7 +8,7 @@ import { Grupo } from './dominios/grupo';
 import { Usuario } from './dominios/usuario';
 import { Documento } from './dominios/documento';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-
+import { environment } from '../environments/environment'
 
 @Component({
   selector: 'app-root',
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   idUsuario: number;
   url: any;
   formato: boolean;
-
+  urlRaiz = environment.urlRaiz
 
   private registrarControles() {
     this.formDocumento = this.fB.group({

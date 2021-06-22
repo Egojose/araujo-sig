@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlRaiz: 'https://enovelsoluciones.sharepoint.com/',
+  urlRaiz: 'https://enovelsoluciones.sharepoint.com',
   urlWeb: 'https://enovelsoluciones.sharepoint.com/sites/appsintervial',
   urlRelativa: '/sites/appsintervial/DocumentosSIG',
   listaDocumentos: 'DocumentosSIG'
