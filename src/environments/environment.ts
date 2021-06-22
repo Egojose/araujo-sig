@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlRaiz: 'https://isaempresas.sharepoint.com/',
+  urlRaiz: 'https://isaempresas.sharepoint.com',
   urlWeb: 'https://isaempresas.sharepoint.com/sites/trawun/sig',
   urlRelativa: '/sites/trawun/sig',
   listaDocumentos: 'DocumentosSIG'
